@@ -1,4 +1,7 @@
- 
+import { useState } from "react";  
+
+
+
 const colorButtonBlue = {backgroundColor: '#7950f2', color: '#FFF'}; 
 
 const messages = ["Learn React", "Apply for Jobs", "Invest your new income"]; 
@@ -7,14 +10,25 @@ const messages = ["Learn React", "Apply for Jobs", "Invest your new income"];
 
  function App(){
      
-     const step = 1; 
-     
+     const [step, setStep] = useState(1);
+   
      function handlePrevious(){
-         alert("Previous");
+         
+         if(step >1){
+             setStep(step - 1);
+         }else{
+             alert('First');
+         }
+          
      }
      
       function handleNext(){
-         alert("Next");
+          if(step < 3){
+              setStep(step + 1);
+          }else{
+              alert('Last Click');
+          }
+         
          
      }
      
