@@ -1,3 +1,5 @@
+import { useState  } from 'react';  
+
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: false },
@@ -32,10 +34,22 @@ function Logo(){
 
 function Form(){
     
+    const [description, setDescription] = useState("Test");
+    const [itemValue, setItemValue] = useState(0);
+    
+    
     function handleSubmit(e){
-        alert('Submit');
+//        alert('Submit');
         
         e.preventDefault(); 
+        
+        if(!description) return;
+        
+        const newItem = {description, itemValue, packed: false, id: Date.now()}; 
+        
+        console.log(newItem);
+        setDescription("");
+        setItemValue(0);
         
     }
     
@@ -43,12 +57,12 @@ function Form(){
         <>
          <form className="add-form" onSubmit={handleSubmit}>
             <h3>What do you need for your trip</h3>
-            <select>
+            <select value={itemValue} onChange={(e) => setItemValue(+e.target.value)}>
                {Array.from({length: 20}, (a, i) => i+1).map((num) => (
                     <option value={num} key={num}>Select : {num}</option>
                 ))}
             </select>
-            <input type="text" placeholder="Item ..." />
+            <input type="text" placeholder="Iteam" value={description} onChange={(e) => setDescription(e.target.value)}  />
             <button>Add</button>
          </form>
          </>
@@ -61,7 +75,7 @@ function PackingList(){
         <div className="list"> 
             <ul>
                 {initialItems.map((item) =>  (
-                    <Item item={item} key="{item.id}" />
+                    <Item item={item} key={item.id} />
                 ))}
             </ul>
          </div>

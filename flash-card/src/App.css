@@ -1,0 +1,4 @@
+.flashcards{ display: flex; justify-content: center; align-content: center; flex-wrap: wrap; }
+.flashcards div{ width: 30%; height: 300px; text-align: center; border: 1px solid #bcbcbc; display: flex; justify-content: center; align-items: center; font-size: 1.25rem; border-radius: 10px;  font-weight: 700; text-transform: capitalize; margin: 0.5rem;}
+
+.flashcards .selected{ background-color: red; color: #FFF; }
